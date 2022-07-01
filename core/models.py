@@ -1,9 +1,8 @@
 from django.db import models
 from django.utils import timezone
-from pyexpat import model
 
 
-class Rss():
+class Rss(models.Model):
     """ 
     store rss urls
     """
