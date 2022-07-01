@@ -1,6 +1,7 @@
-from pyexpat import model
 from django.db import models
 from django.utils import timezone
+from pyexpat import model
+
 
 class Rss():
     """ 
@@ -19,7 +20,9 @@ class News(models.Model):
     store news article 
     """
     title = models.CharField(max_length = 200) 
+    link = models.URLField()
     description = models.TextField()
+    creator = models.CharField(blank=True, null=True)
     published = models.DateTimeField(default = timezone.now)
     
     
