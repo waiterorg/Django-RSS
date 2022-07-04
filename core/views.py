@@ -16,7 +16,8 @@ class UpdateNews(APIView):
 
     def post(self, request):
         get_news.delay()
-        return Response({"msg": "ok"})
+        response = Response(status=status.HTTP_200_OK)
+        return response
 
 
 class NewsList(APIView, PageNumberPagination):
@@ -25,15 +26,11 @@ class NewsList(APIView, PageNumberPagination):
     """
 
     permission_classes = (IsAuthenticated,)
+    news_serializer = NewsSerializer
 
-    # TODO:
-    # 1. [x] jwt auth permision for access
-    # 2. [x] Create serializer
-    # 3. [x] drf pagination
-    # 4. [] refactor
     def get(self, request):
         news = News.objects.all()
         result = self.paginate_queryset(news, request, view=self)
-        serializer = NewsSerializer(result, many=True)
+        serializer = self.news_serializer(result, many=True)
         response = Response(serializer.data, status=status.HTTP_200_OK)
         return response
