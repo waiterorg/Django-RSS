@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from rest_framework import status
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticated
@@ -16,7 +17,10 @@ class UpdateNews(APIView):
 
     def post(self, request):
         get_news.delay()
-        response = Response(status=status.HTTP_200_OK)
+        response = Response(
+            {"message": "the request was successfull !"},
+            status=status.HTTP_200_OK,
+        )
         return response
 
 
