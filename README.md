@@ -5,7 +5,7 @@ This will be run every hour to gather new news.
 1. Either fork or download the app and open the folder in the cli.
 2. Make sure you have the Docker app running on your computer, you can download docker from [here](https://www.docker.com/products/docker-desktop).
 3. run this command to start the multicontainer application `docker-compose up`.
-Note : For easy access sqlite db is in source .
+<br /> Note : For easy access sqlite db is in source .
 
 ## How to use
 1. Follow link `http://127.0.0.1:8000/admin/`
