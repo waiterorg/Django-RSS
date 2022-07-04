@@ -1,5 +1,5 @@
 # Django-RSS
-Django RSS gather news from a list of RSS urls which are stored database.
+Django RSS gather news from a list of RSS urls which are stored in database.
 This will be run every hour to gather new news.
 ## Setup
 1. Either fork or download the app and open the folder in the cli.
