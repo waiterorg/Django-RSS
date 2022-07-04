@@ -9,6 +9,12 @@ class TimeStamp(models.Model):
         abstract = True
 
 
+class RssManager(models.Manager):
+    def filter_active_rss(self):
+        active = self.filter(status=True)
+        return active
+
+
 class Rss(TimeStamp):
     """
     store rss urls
@@ -17,6 +23,7 @@ class Rss(TimeStamp):
     name = models.CharField(max_length=200)
     url = models.URLField()
     status = models.BooleanField(default=False)
+    objects = RssManager()
 
     class Meta:
         verbose_name_plural = "RSS Urls"
