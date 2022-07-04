@@ -15,7 +15,7 @@ This will be run every hour to gather new news.
 <br /> Note : Some urls need VPN if you're from Iran .
 4. Every hour on minutes 0, news be updated .
 
-## Get news and updated that moment
+## Get news and update that moment
 If you want get news that moment:
 1. Follow `http://127.0.0.1:8000/api/token/` and post username and password and get access token.
 <br /> Note : For easy access i create a user with `username : root` and `password : 123`
