@@ -1,3 +1,5 @@
+from rest_framework import status
+from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -12,16 +14,19 @@ class UpdateNews(APIView):
         return Response({"msg": "ok"})
 
 
-class NewsList(APIView):
+class NewsList(APIView, PageNumberPagination):
     """
     Return list of all news with pagination
     """
 
     # TODO:
     # 1. [] jwt auth permision for access
-    # 2. [] Create serializer
-    # 3. [] drf pagination
+    # 2. [x] Create serializer
+    # 3. [x] drf pagination
     def get(self, request):
-        queryset = News.objects.all()
-        serializer = NewsSerializer(queryset, many=True)
-        return Response(serializer.data)
+        paginator = PageNumberPagination
+        news = News.objects.all()
+        result = self.paginate_queryset(news, request, view=self)
+        serializer = NewsSerializer(result, many=True)
+        response = Response(serializer.data, status=status.HTTP_200_OK)
+        return response
