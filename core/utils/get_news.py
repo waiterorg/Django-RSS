@@ -8,7 +8,7 @@ from ..models import News, Rss
 
 def get_news_from_rss_urls():
     """receives news from rss urls which are stored in rss table and it does not get repeated news"""
-    rss_list = Rss.objects.filter(status=True)
+    rss_list = Rss.objects.filter_active_rss()
     if rss_list.exists():
         for rss in rss_list:
             url = rss.url
