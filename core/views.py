@@ -8,6 +8,7 @@ from rest_framework.views import APIView
 from .models import News
 from .serializers import NewsSerializer
 from .tasks import get_news
+from .utils.get_news import get_all_news_query
 
 
 class UpdateNews(APIView):
@@ -33,7 +34,7 @@ class NewsList(APIView, PageNumberPagination):
     news_serializer = NewsSerializer
 
     def get(self, request):
-        news = News.objects.all()
+        news = get_all_news_query()
         result = self.paginate_queryset(news, request, view=self)
         serializer = self.news_serializer(result, many=True)
         response = Response(serializer.data, status=status.HTTP_200_OK)
