@@ -9,19 +9,19 @@ Note : For easy access sqlite db is in source .
 
 ## How to use
 1. Follow link `http://127.0.0.1:8000/admin/`
-Note : For easy access i create a user with `username : root` and `password : 123` .
+<br /> Note : For easy access i create a user with `username : root` and `password : 123` .
 2. Go `http://127.0.0.1:8000/admin/core/rss/`
 3. Put some rss urls for example `https://www1.cbn.com/rss-cbn-articles-cbnnews.xml`.
-Note : Some urls need VPN if you're from Iran .
+<br /> Note : Some urls need VPN if you're from Iran .
 4. Every hour on minutes 0, news be updated .
 
 ## Get news and updated that moment
 If you want get news that moment:
 1. Follow `http://127.0.0.1:8000/api/token/` and post username and password and get access token.
-Note : For easy access i create a user with `username : root` and `password : 123`
+<br /> Note : For easy access i create a user with `username : root` and `password : 123`
 2. Use JWT access token for `http://127.0.0.1:8000/` with POST method.
 3. News are updated and you can get from `http://127.0.0.1:8000/news/`.
-Note : For next page you can follow `http://127.0.0.1:8000/news/?page=2`
+<br /> Note : For next page you can follow `http://127.0.0.1:8000/news/?page=2`
 
 ## Technologies
   - [Python](https://www.python.org/)
