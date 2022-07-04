@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 import os
 from pathlib import Path
 
+from celery.schedules import crontab
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -133,6 +135,13 @@ REST_FRAMEWORK = {
     ],
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
     "PAGE_SIZE": 10,
+}
+
+CELERY_BEAT_SCHEDULE = {
+    "get_news": {
+        "task": "core.tasks.get_news",
+        "schedule": crontab(minute="0"),
+    },
 }
 
 CELERY_BROKER_URL = "redis://redis:6379"
